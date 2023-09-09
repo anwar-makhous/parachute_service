@@ -38,11 +38,8 @@ dependencies:
   font_awesome_flutter: ^9.2.0
   carousel_slider: ^4.0.0
   intl: ^0.17.0
-  # email_validator: ^2.0.1
   percent_indicator: ^3.4.0
   flutter_group_button: ^1.0.1
-  google_maps_place_picker_mb: ^2.0.0-mb.13
-  shared_preferences: ^2.0.12
 
 
 dev_dependencies:
@@ -74,6 +71,11 @@ flutter:
     - assets/offers/
     - assets/images/
     - assets/images/Restaurants/
+    - assets/images/Restaurants/Burgers/
+    - assets/images/Restaurants/Pastas/
+    - assets/images/Restaurants/Pizzas/
+    - assets/images/Pharmacies/
+    - assets/images/Grocery/
     - assets/logo/Parachute-Logo-on-Red.png
     - assets/logo/Parachute-Logo-on-White.png
     - assets/logo/intro.png

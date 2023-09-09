@@ -1,15 +1,7 @@
-// import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:parachute_delivery/data/shops.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-// import 'package:http/http.dart' as http;
-// import 'package:parachute/InfoPage.dart';
-// import 'package:parachute/PlaceLocation.dart';
-// import 'package:parachute/RestaurantReservation.dart';
-// import 'package:parachute/src/LoginPage.dart';
 import '../../global_state.dart';
-import '../map_page.dart';
 import 'product_details.dart';
 import 'restaurant_reservation.dart';
 
@@ -294,13 +286,13 @@ class _ShopState extends State<Shop> {
                           ],
                         ),
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return PlaceLocation.showLocation(
-                                false,
-                                LatLng(double.parse(_shopData['lat']),
-                                    double.parse(_shopData['long'])));
-                          }));
+                          // Navigator.push(context,
+                          //     MaterialPageRoute(builder: (context) {
+                          //   return PlaceLocation.showLocation(
+                          //       false,
+                          //       LatLng(double.parse(_shopData['lat']),
+                          //           double.parse(_shopData['long'])));
+                          // }));
                         }),
                   ],
                 ),

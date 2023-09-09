@@ -33,7 +33,7 @@ class _RestaurantReservation extends State<RestaurantReservation> {
   int selectedPeopleNoIndex = 0;
   String _reservationDate = '';
   String _reservationTime = '';
-  DateTime reservationFullDate = DateTime(2021);
+  DateTime? _reservationFullDate;
   String _reservationDetails = '';
   int _peopleNo = 1;
   List<String> timeSlots = [];
@@ -824,10 +824,17 @@ class _RestaurantReservation extends State<RestaurantReservation> {
             ? _specialOccasionsFinal
             : _additionalDetailsController.text.toString() +
                 "\nSpecial Occasions: $_specialOccasionsFinal";
+
+    _reservationFullDate = DateTime(
+        nextWeekOpeningDays[selectedDate].year,
+        nextWeekOpeningDays[selectedDate].month,
+        nextWeekOpeningDays[selectedDate].day,
+        DateFormat.jm().parse(timeSlots[selectedTime]).hour,
+        DateFormat.jm().parse(timeSlots[selectedTime]).minute);
     _reservationInfo = {
       'Date': _reservationDate,
       'Time': _reservationTime,
-      'Full Date': reservationFullDate,
+      'Full Date': _reservationFullDate,
       'People#': _peopleNo,
       'Additional Details': _reservationDetails,
       'Edit': {

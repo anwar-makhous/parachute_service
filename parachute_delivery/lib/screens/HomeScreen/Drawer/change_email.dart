@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:email_validator/email_validator.dart';
 import '/global_state.dart';
 
 class ChangeEmail extends StatefulWidget {
@@ -18,47 +17,6 @@ class _ChangeEmail extends State<ChangeEmail> {
   bool inProgress = false;
   final _formKey = GlobalKey<FormState>();
   bool securePassword = true;
-
-  // updateUserEmail(String email, String password) async {
-  //   setState(() {
-  //     inProgress = true;
-  //   });
-  //   final String apiURL = "${GlobalState.hostURL}/api/auth/useremail";
-  //   final response = await http.post(
-  //     apiURL,
-  //     headers: {'Authorization': 'Bearer ${GlobalState.thisUser.token}'},
-  //     body: {
-  //       "old_email": GlobalState.thisUser.email,
-  //       "email": email,
-  //       "password": password
-  //     },
-  //   );
-  //   if (response.statusCode == 200) {
-  //     setState(() {
-  //       inProgress = false;
-  //       User _user = User.fromJson({
-  //         "first_name": GlobalState.thisUser.firstName,
-  //         "last_name": GlobalState.thisUser.lastName,
-  //         "email": email,
-  //         "phone": GlobalState.thisUser.phone,
-  //         "token": GlobalState.thisUser.token,
-  //         "lat": GlobalState.thisUser.lat.toString(),
-  //         "long": GlobalState.thisUser.long.toString(),
-  //         "address": GlobalState.thisUser.address,
-  //       });
-  //       GlobalState.logIn(_user);
-  //       GlobalState.toastMessage("Done");
-  //       Navigator.of(context).pushAndRemoveUntil(
-  //           MaterialPageRoute(builder: (context) => HomePage()),
-  //           (Route<dynamic> route) => false);
-  //     });
-  //   } else {
-  //     setState(() {
-  //       inProgress = false;
-  //     });
-  //     GlobalState.toastMessage(json.decode(response.body)["Messages"]);
-  //   }
-  // }
 
   @override
   void initState() {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../map_page.dart';
 import '/screens/Login/social_login.dart';
 import '../../global_state.dart';
 import '../ShopScreens/shop_page.dart';
@@ -34,32 +33,6 @@ class _HomePageState extends State<HomePage> {
   bool searchInProgress = false;
   bool carouselCreated = false;
   TextEditingController textEditingController = TextEditingController();
-
-  // Future<List> searchResults(String searchItem) async {
-  //   String myURL = "${GlobalState.hostURL}/api/shops/search";
-  //   final response = await http.post(myURL, body: {"text": searchItem});
-  //   Map _responseMap = json.decode(response.body);
-  //   _searchedList = _responseMap['success']['shops'];
-  //   if (response.statusCode == 200) {
-  //     return _searchedList;
-  //   } else
-  //     return null;
-  // }
-
-  // getData() async {
-  //   setState(() {
-  //     _inProgress = true;
-  //   });
-  //   String myURL = "${GlobalState.hostURL}/api/categories/";
-  //   http.Response response = await http.get(myURL);
-  //   if (response.statusCode == 200)
-  //     setState(() {
-  //       Map _responseMap = json.decode(response.body);
-  //       _categoriesList = _responseMap['success']['categories'];
-  //       GlobalState.categoriesList = _categoriesList;
-  //       _inProgress = false;
-  //     });
-  // }
 
   Future<void> refreshPage() async {
     // await Future.delayed(Duration(seconds: 1));
@@ -176,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                       GlobalState.alert(
                         context,
                         onConfirm: () {
-                          GlobalState.logOut();
+                          // GlobalState.logOut();
                           Navigator.pop(context);
                           Navigator.pop(context);
                           // this.setState(() {});
@@ -385,32 +358,11 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.white,
                         ),
                         onPressed: () {
-                          if (GlobalState.loggedIn == false) {
-                            GlobalState.alert(
+                          Navigator.pushAndRemoveUntil(
                               context,
-                              onConfirm: () {
-                                Navigator.pop(context);
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return const SocialLogin();
-                                }));
-                              },
-                              onCancel: () {
-                                Navigator.pop(context);
-                              },
-                              title: "Log In",
-                              message: 'You are not allowed to access '
-                                  'this page until you log in',
-                              confirmText: "Log in now",
-                              cancelText: 'Log in later',
-                            );
-                          } else {
-                            Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const AccountInfo()),
-                                (route) => false);
-                          }
+                              MaterialPageRoute(
+                                  builder: (context) => const AccountInfo()),
+                              (route) => false);
                         },
                         splashColor: Colors.white,
                       ),
@@ -431,40 +383,16 @@ class _HomePageState extends State<HomePage> {
                           onPressed: () {}),
                       IconButton(
                           icon: const Icon(
-                            Icons.logout,
+                            Icons.history,
                             color: Colors.white,
                           ),
-                          onPressed: () {
-                            (GlobalState.loggedIn)
-                                ? GlobalState.alert(
+                          onPressed: () => {
+                                Navigator.push(
                                     context,
-                                    onConfirm: () {
-                                      GlobalState.logOut();
-                                      Navigator.pop(context);
-                                      Navigator.pop(context);
-                                      // this.setState(() {});
-                                    },
-                                    onCancel: () {
-                                      Navigator.of(context, rootNavigator: true)
-                                          .pop();
-                                    },
-                                    message: 'You\'re about to log out'
-                                        ' of your account',
-                                    title: 'Warning',
-                                    confirmText: "Log Out",
-                                    cancelText: "Cancel",
-                                  )
-                                : GlobalState.alert(context, onConfirm: () {
-                                    Navigator.of(context, rootNavigator: true)
-                                        .pop();
-                                  },
-                                    onCancel: () {},
-                                    confirmOnly: true,
-                                    message:
-                                        'You can\'t logout because you aren\'t loggedIn',
-                                    title: 'Warning',
-                                    confirmText: "OK");
-                          }),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ReservationsList()))
+                              }),
                     ],
                   ),
                 ),
@@ -480,24 +408,24 @@ class _HomePageState extends State<HomePage> {
                     child: const Icon(Icons.my_location_sharp,
                         color: Colors.white),
                     onPressed: () async {
-                      String currentLocation = await GlobalState.getLocation();
-                      GlobalState.alert(
-                        context,
-                        onConfirm: () {
-                          Navigator.of(context, rootNavigator: true).pop();
-                          Navigator.of(context, rootNavigator: true).push(
-                              MaterialPageRoute(
-                                  builder: (context) => PlaceLocation(true)));
-                        },
-                        onCancel: () {
-                          Navigator.of(context, rootNavigator: true).pop();
-                        },
-                        title: "Current Location",
-                        message: 'Your Current Location is:\n' +
-                            currentLocation +
-                            '\n'
-                                "Continue to change your Location?",
-                      );
+                      // String currentLocation = await GlobalState.getLocation();
+                      // GlobalState.alert(
+                      //   context,
+                      //   onConfirm: () {
+                      //     Navigator.of(context, rootNavigator: true).pop();
+                      //     // Navigator.of(context, rootNavigator: true).push(
+                      //     //     MaterialPageRoute(
+                      //     //         builder: (context) => PlaceLocation(true)));
+                      //   },
+                      //   onCancel: () {
+                      //     Navigator.of(context, rootNavigator: true).pop();
+                      //   },
+                      //   title: "Current Location",
+                      //   message: 'Your Current Location is:\n' +
+                      //       currentLocation +
+                      //       '\n'
+                      //           "Continue to change your Location?",
+                      // );
                     }),
               ),
             ]),

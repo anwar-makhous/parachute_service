@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:email_validator/email_validator.dart';
+import 'package:parachute_delivery/screens/Login/forgot_password.dart';
 import 'register_page.dart';
 import '../../global_state.dart';
 
@@ -20,51 +20,6 @@ class _LoginPageState extends State<LoginPage> {
   bool securePassword = true;
   Size? cardSize;
   Offset? cardPosition;
-
-  // Future<User> logIn(String email, String password) async {
-  //   setState(() {
-  //     _inProgress = true;
-  //   });
-  //   final String logInURL = "${GlobalState.hostURL}/api/auth/login";
-  //   final String getUserInfoURL = "${GlobalState.hostURL}/api/auth/user";
-  //   final response1 =
-  //       await http.post(logInURL, body: {"email": email, "password": password});
-  //   if (response1.statusCode == 200) {
-  //     final Map tokenResponse = json.decode(response1.body);
-  //     String token = tokenResponse['success']['token'];
-  //     final response2 = await http.get(
-  //       getUserInfoURL,
-  //       headers: {'Authorization': 'Bearer $token'},
-  //     );
-  //     final Map _userInfo = json.decode(response2.body);
-  //     setState(() {
-  //       _user = User.fromJson({
-  //         "first_name": _userInfo['success']['first_name'],
-  //         "last_name": _userInfo['success']['last_name'],
-  //         "email": _userInfo['success']['email'],
-  //         "phone": _userInfo['success']['phone'],
-  //         "token": token,
-  //         "lat": GlobalState.lat,
-  //         "long": GlobalState.long,
-  //         "address": GlobalState.address,
-  //       });
-  //       GlobalState.logIn(_user);
-  //       Navigator.of(context).pushAndRemoveUntil(
-  //           MaterialPageRoute(builder: (context) => HomePage()),
-  //           (Route<dynamic> route) => false);
-  //     });
-  //     setState(() {
-  //       _inProgress = false;
-  //     });
-  //     return _user;
-  //   } else {
-  //     GlobalState.toastMessage(json.decode(response1.body).toString());
-  //     setState(() {
-  //       _inProgress = false;
-  //     });
-  //     return null;
-  //   }
-  // }
 
   @override
   void initState() {
@@ -126,12 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    Text('Forgot Password ?',
-                                        style: TextStyle(
-                                            color: GlobalState.logoColor
-                                                .withOpacity(0.6),
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold)),
+                                    _forgotPasswordLabel(),
                                     _createAccountLabel(),
                                   ],
                                 ),
@@ -232,6 +182,24 @@ class _LoginPageState extends State<LoginPage> {
                 fontSize: 15,
                 fontWeight: FontWeight.bold),
           )),
+    );
+  }
+
+  Widget _forgotPasswordLabel() {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const ForgotPasswordPage()));
+      },
+      child: Container(
+          alignment: Alignment.bottomCenter,
+          child: Text('Forgot Password ?',
+              style: TextStyle(
+                  color: GlobalState.logoColor.withOpacity(0.6),
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold))),
     );
   }
 

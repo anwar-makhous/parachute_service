@@ -1,10 +1,7 @@
 import 'dart:async';
-// import 'dart:convert';
 import "package:flutter/material.dart";
-// import 'package:parachute/HomePage.dart';
 import '../global_state.dart';
 import 'HomeScreen/home_page.dart';
-// import 'package:http/http.dart' as http;
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);
@@ -22,19 +19,6 @@ class _IntroPageState extends State<IntroPage> {
   double? logoLeftPosition2;
   double? logoBottomPosition3;
   bool animationDone = false;
-  // Map? _responseMap;
-
-  // getData() async {
-  //   String myURL = "${GlobalState.hostURL}/api/categories/";
-  //   http.Response response = await http.get(myURL);
-  //   if (response.statusCode == 200) {
-  //     _responseMap = json.decode(response.body);
-  //     GlobalState.categoriesList = _responseMap['success']['categories'];
-  //     Navigator.of(context).pushAndRemoveUntil(
-  //         MaterialPageRoute(builder: (context) => HomePage()),
-  //         (Route<dynamic> route) => false);
-  //   }
-  // }
 
   @override
   void initState() {
@@ -55,15 +39,14 @@ class _IntroPageState extends State<IntroPage> {
     _timer3 = Timer(const Duration(seconds: 7), () {
       setState(() {
         logoBottomPosition3 = MediaQuery.of(context).size.height * 0.2;
+        animationDone = true;
       });
     });
     _timer4 = Timer(const Duration(seconds: 9), () {
       setState(() {
-        animationDone = true;
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) => const HomePage()),
             (Route<dynamic> route) => false);
-        // getData();
       });
     });
   }

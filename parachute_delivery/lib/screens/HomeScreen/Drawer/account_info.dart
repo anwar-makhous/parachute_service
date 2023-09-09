@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../../map_page.dart';
 import 'change_email.dart';
 import '/screens/HomeScreen/home_page.dart';
 import '/global_state.dart';
@@ -27,58 +25,6 @@ class _AccountInfoState extends State<AccountInfo> {
       TextEditingController(text: GlobalState.thisUser.address.toString());
   final _formKey = GlobalKey<FormState>();
   bool inProgress = false;
-
-  // updateUserInformation(
-  //     String firstName, String lastName, String phone, String address) async {
-  //   setState(() {
-  //     inProgress = true;
-  //   });
-  //   final String apiURL = "${GlobalState.hostURL}/api/auth/user";
-  //   final response = await http.post(
-  //     apiURL,
-  //     headers: {'Authorization': 'Bearer ${GlobalState.thisUser.token}'},
-  //     body: {
-  //       "first_name": firstName,
-  //       "last_name": lastName,
-  //       "phone": phone,
-  //       "address": address,
-  //       "lat": GlobalState.thisUser.lat.toString(),
-  //       "long": GlobalState.thisUser.long.toString(),
-  //       "_method": "put",
-  //     },
-  //   );
-  //   if (response.statusCode == 200) {
-  //     setState(() {
-  //       inProgress = false;
-  //       GlobalState.toastMessage('Done');
-  //       Map userInfoResponse = json.decode(response.body);
-  //       User _user = User.fromJson({
-  //         "first_name": userInfoResponse['success']['data']['first_name'],
-  //         "last_name": userInfoResponse['success']['data']['last_name'],
-  //         "email": userInfoResponse['success']['data']['email'],
-  //         "phone": userInfoResponse['success']['data']['phone'],
-  //         "address": userInfoResponse['success']['data']['address'],
-  //         "lat": double.parse(userInfoResponse['success']['data']['lat']),
-  //         "long": double.parse(userInfoResponse['success']['data']['long']),
-  //         "token": GlobalState.thisUser.token,
-  //       });
-  //       GlobalState.logIn(_user);
-  //       AccountInfo.addressChanged = false;
-  //       Navigator.of(context).pushAndRemoveUntil(
-  //           MaterialPageRoute(builder: (context) => HomePage()),
-  //           (Route<dynamic> route) => false);
-  //     });
-  //   } else {
-  //     GlobalState.toastMessage('Error');
-  //   }
-  // }
-
-  // Future getImage(int type) async {
-  //   PickedFile pickedImage = await ImagePicker().getImage(
-  //       source: type == 1 ? ImageSource.camera : ImageSource.gallery,
-  //       imageQuality: 50);
-  //   return pickedImage;
-  // }
 
   @override
   void initState() {
@@ -449,10 +395,10 @@ class _AccountInfoState extends State<AccountInfo> {
                   alignment: Alignment.centerLeft,
                   child: InkWell(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => PlaceLocation.setLocation(
-                                false,
-                                LatLng(GlobalState.lat!, GlobalState.long!))));
+                        // Navigator.of(context).push(MaterialPageRoute(
+                        //     builder: (context) => PlaceLocation.setLocation(
+                        //         false,
+                        //         LatLng(GlobalState.lat, GlobalState.long))));
                       },
                       child: const Text(
                         "Change Address ?",
@@ -485,51 +431,4 @@ class _AccountInfoState extends State<AccountInfo> {
           ]),
     );
   }
-
-// photoWidget() {
-//   return Column(
-//     children: [
-//       Text(
-//         "here is the path of the image",
-//         style: TextStyle(
-//           fontWeight: FontWeight.bold,
-//           fontSize: 15,
-//         ),
-//       ),
-//       SizedBox(height: 20,),
-//       Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//         children: [
-//           Container(
-//             height: 100,
-//             width: 100,
-//             decoration: BoxDecoration(
-//                 image: DecorationImage(
-//                     image: imageFile == null
-//                         ? AssetImage(
-//                         'assets/logo/facebook.png')
-//                         : FileImage(File(imageFile.path)),
-//                     fit: BoxFit.cover)),
-//           ),
-//           RaisedButton(onPressed: () async {
-//             final tmpFile = await getImage(2);
-//             setState(() {
-//               imageFile = tmpFile;
-//               print("hey look here:");
-//               file=File(imageFile.path);
-//               print("here is the file");
-//               print(file);
-//             });
-//           },
-//             child:
-//             Text("Choose Image",style:TextStyle(
-//               fontWeight: FontWeight.bold,
-//               color:Colors.white,
-//               fontSize: 18,)),
-//           )
-//         ],
-//       )
-//     ],
-//   );
-// }
 }

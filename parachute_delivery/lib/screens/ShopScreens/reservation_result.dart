@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../map_page.dart';
 import '/screens/HomeScreen/home_page.dart';
 import 'restaurant_reservation.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../global_state.dart';
 
 class ReservationResult extends StatefulWidget {
@@ -36,9 +34,6 @@ class _ReservationResultState extends State<ReservationResult> {
   // Map _reservationResponse = {};
   int reservationID = 0;
   String status = '';
-  int? waiterID;
-  int? reservationRate;
-  bool readyToRate = false;
   String pendingText = '';
   String confirmText = '';
   String refusedText = '';
@@ -54,114 +49,6 @@ class _ReservationResultState extends State<ReservationResult> {
   int peopleNumber = 0;
 
   _ReservationResultState();
-
-  // makeReservation(
-  //     String details, int peopleNumber, DateTime date, bool atvlo) async {
-  //   setState(() {
-  //     _inProgress = true;
-  //   });
-  //   String apiURL = (_reservationID != -1)
-  //       ? "${GlobalState.hostURL}/api/update_reservation/${_reservationID.toString()}"
-  //       : "${GlobalState.hostURL}/api/request_reservation";
-  //   final response = (_reservationID != -1)
-  //       ? await http.put(apiURL, body: {
-  //           "table_id": tableID,
-  //           "details": details,
-  //           "people_number": peopleNumber.toString(),
-  //           "date": date.toString(),
-  //           "atvlo": (atvlo) ? '1' : '0',
-  //           "status": 'Pending'
-  //         }, headers: {
-  //           'Authorization': 'Bearer ${GlobalState.thisUser.token}'
-  //         })
-  //       : await http.post(apiURL, body: {
-  //           "table_id": tableID,
-  //           "details": details,
-  //           "people_number": peopleNumber.toString(),
-  //           "date": date.toString(),
-  //           "atvlo": (atvlo) ? '1' : '0'
-  //         }, headers: {
-  //           'Authorization': 'Bearer ${GlobalState.thisUser.token}'
-  //         });
-  //   if (response.statusCode == 200) {
-  //     _reservationResponse = json.decode(response.body);
-  //     if (_reservationID == -1) {
-  //       _reservationID = _reservationResponse['data']['id'];
-  //       status =
-  //           (_reservationResponse['data']['status'].toString().toLowerCase() ==
-  //                   'pending')
-  //               ? "Pending"
-  //               : (_reservationResponse['data']['status']
-  //                           .toString()
-  //                           .toLowerCase() ==
-  //                       'accepted')
-  //                   ? "Accepted"
-  //                   : "Declined";
-  //     }
-  //     this.date = DateTime.parse(_reservationResponse['data']['date']);
-  //     this.details = _reservationResponse['data']['details'];
-  //     try {
-  //       this.peopleNumber =
-  //           int.parse(_reservationResponse['data']['people_number']);
-  //     } catch (e) {
-  //       this.peopleNumber = _reservationResponse['data']['people_number'];
-  //       print(e);
-  //     }
-  //     waiterID = _reservationResponse['data']['waiter_id'];
-  //     reservationRate = _reservationResponse['data']['rate'];
-  //     GlobalState.toastMessage('Done');
-  //   } else {
-  //     GlobalState.toastMessage(json.decode(response.body).toString());
-  //   }
-  //   setState(() {
-  //     _inProgress = false;
-  //   });
-  // }
-
-  // cancelReservation() async {
-  //   setState(() {
-  //     _inProgress = true;
-  //   });
-  //   String apiURL =
-  //       "${GlobalState.hostURL}/api/management_reservations/${_reservationID.toString()}";
-  //   final response = await http.delete(apiURL,
-  //       headers: {'Authorization': 'Bearer ${GlobalState.thisUser.token}'});
-  //   if (response.statusCode == 200) {
-  //     setState(() {
-  //       canceled = true;
-  //     });
-  //     GlobalState.toastMessage(json.decode(response.body)["message"]);
-  //   } else {
-  //     setState(() {
-  //       canceled = false;
-  //       GlobalState.toastMessage(json.decode(response.body).toString());
-  //     });
-  //   }
-  //   setState(() {
-  //     _inProgress = false;
-  //   });
-  // }
-
-  // getShop(int id) async {
-  //   setState(() {
-  //     _gettingShop = true;
-  //   });
-  //   String apiURL = '${GlobalState.hostURL}/api/shops/$id';
-  //   final response = await http.get(apiURL);
-  //   if (response.statusCode == 200) {
-  //     _restaurantData = json.decode(response.body)['success']['shop'];
-  //     tablesList = _restaurantData['tables'];
-  //     for (int i = 0; i < tablesList.length; i++)
-  //       setTable(tablesList[i]['id'], tablesList[i]['number']);
-  //     tableNo = getTable(_reservationInfo['table_id']);
-  //   } else {
-  //     GlobalState.toastMessage('Error');
-  //     Navigator.pop(context);
-  //   }
-  //   setState(() {
-  //     _gettingShop = false;
-  //   });
-  // }
 
   @override
   void initState() {
@@ -186,29 +73,15 @@ class _ReservationResultState extends State<ReservationResult> {
     pendingIcon = Icons.pending;
     confirmIcon = Icons.done;
     refusedIcon = FontAwesomeIcons.times;
-    // if (!ReservationResult.isFromLog) {
-    //   makeReservation(
-    //       _reservationInfo['TableID'],
-    //       _reservationInfo['Additional Details'],
-    //       _reservationInfo['People#'],
-    //       _reservationInfo['Full Date'],
-    //       _reservationInfo['Live Location Access']);
-    // } else {
-    //   getShop(_restaurantData['id']);
-    //   date = DateTime.parse(_reservationInfo['date']);
-    //   details = _reservationInfo['details'];
-    //   peopleNumber = _reservationInfo['people_number'];
-    //   avtlo = (_reservationInfo['avtlo'] == 1) ? true : false;
-    //   waiterID = _reservationInfo['waiter_id'];
-    //   reservationRate = _reservationInfo['rate'];
-    // }
+    date = (!ReservationResult.isFromLog)
+        ? _reservationInfo['Full Date']
+        : DateTime.parse(_reservationInfo['date']);
+    details = _reservationInfo['Additional Details'];
+    peopleNumber = _reservationInfo['People#'];
   }
 
   @override
   Widget build(BuildContext context) {
-    waiterID = 3;
-    reservationRate = 4;
-    readyToRate = true;
     return SafeArea(
         top: true,
         child: Stack(children: [
@@ -395,49 +268,15 @@ class _ReservationResultState extends State<ReservationResult> {
                     ],
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return PlaceLocation.showLocation(
-                          false,
-                          LatLng(double.parse(restaurantData['lat']),
-                              double.parse(restaurantData['long'])));
-                    }));
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (context) {
+                    //   return PlaceLocation.showLocation(
+                    //       false,
+                    //       LatLng(double.parse(restaurantData['lat']),
+                    //           double.parse(restaurantData['long'])));
+                    // }));
                   }),
             ]),
-        (waiterID == null)
-            ? const SizedBox()
-            : const SizedBox(
-                height: 10,
-              ),
-        (waiterID == null)
-            ? const SizedBox()
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                    Text(
-                      'Waiter ID : \n$waiterID',
-                      style: const TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                    if (readyToRate)
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: GlobalState.logoColor,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(14.0),
-                                side: const BorderSide(
-                                    color: GlobalState.logoColor)),
-                          ),
-                          child: const Text(
-                            "Rate Waiter",
-                            style: TextStyle(fontSize: 16, color: Colors.white),
-                          ),
-                          onPressed: () {
-                            //
-                          }),
-                  ]),
         const Divider(
           thickness: 2,
         ),
@@ -516,21 +355,6 @@ class _ReservationResultState extends State<ReservationResult> {
               fontSize: 18,
             ),
           ),
-        (reservationRate == null)
-            ? const SizedBox()
-            : const SizedBox(
-                height: 10,
-              ),
-        (reservationRate == null)
-            ? const SizedBox()
-            : GlobalState.rateWithIcon(reservationRate,
-                isRow: true,
-                text: const Text(
-                  'Your Rate : ',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                )),
       ],
     );
   }
@@ -593,7 +417,10 @@ class _ReservationResultState extends State<ReservationResult> {
           onPressed: () {
             GlobalState.alert(context, onConfirm: () {
               Navigator.pop(context);
-              // cancelReservation();
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                  (route) => false);
             }, onCancel: () {
               setState(() {
                 Navigator.pop(context);

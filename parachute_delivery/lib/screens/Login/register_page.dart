@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:email_validator/email_validator.dart';
 import '../../global_state.dart';
 import 'social_login.dart';
 
@@ -21,53 +20,6 @@ class _RegisterPageState extends State<RegisterPage> {
   bool inProgress = false;
 
   final _formKey = GlobalKey<FormState>();
-
-  // Future<User> createUser(String firstName, String lastName, String email,
-  //     String password, String checkPassword, String phone) async {
-  //   setState(() {
-  //     _inProgress = true;
-  //   });
-  //   final String apiURL = "${GlobalState.hostURL}/api/auth/create-account";
-  //   final response = await http.post(apiURL, body: {
-  //     "first_name": firstName,
-  //     "last_name": lastName,
-  //     "email": email,
-  //     "password": password,
-  //     "c_password": checkPassword,
-  //     "phone": phone,
-  //     "location_id": '1',
-  //   });
-  //   if (response.statusCode == 200) {
-  //     final Map tokenResponse = json.decode(response.body);
-  //     String token = tokenResponse['success']['token'];
-  //     User _user = User.fromJson({
-  //       "first_name": firstName,
-  //       "last_name": lastName,
-  //       "email": email,
-  //       "phone": phone,
-  //       "token": token,
-  //       "lat": GlobalState.lat,
-  //       "long": GlobalState.long,
-  //       "address": GlobalState.address,
-  //     });
-  //     setState(() {
-  //       GlobalState.logIn(_user);
-  //       Navigator.of(context).pushAndRemoveUntil(
-  //           MaterialPageRoute(builder: (context) => HomePage()),
-  //           (Route<dynamic> route) => false);
-  //     });
-  //     setState(() {
-  //       _inProgress = false;
-  //     });
-  //     return _user;
-  //   } else {
-  //     GlobalState.toastMessage(json.decode(response.body).toString());
-  //     setState(() {
-  //       _inProgress = false;
-  //     });
-  //     return null;
-  //   }
-  // }
 
   @override
   void initState() {

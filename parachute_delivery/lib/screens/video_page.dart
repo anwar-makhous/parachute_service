@@ -1,7 +1,6 @@
 import 'dart:async';
 import "package:flutter/material.dart";
 import '../global_state.dart';
-import 'map_page.dart';
 
 class VideoPage extends StatefulWidget {
   const VideoPage({Key? key}) : super(key: key);
@@ -130,10 +129,10 @@ class _VideoPage extends State<VideoPage> {
                                   TextStyle(fontSize: 16, color: Colors.white),
                             ),
                             onPressed: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return PlaceLocation(true);
-                              }));
+                              // Navigator.push(context,
+                              //     MaterialPageRoute(builder: (context) {
+                              //   return PlaceLocation(true);
+                              // }));
                             },
                           ),
                         ),
@@ -154,10 +153,10 @@ class _VideoPage extends State<VideoPage> {
                                   TextStyle(fontSize: 16, color: Colors.black),
                             ),
                             onPressed: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return PlaceLocation(false);
-                              }));
+                              // Navigator.push(context,
+                              //     MaterialPageRoute(builder: (context) {
+                              //   return PlaceLocation(false);
+                              // }));
                             },
                           ),
                         ),

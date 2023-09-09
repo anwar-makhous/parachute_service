@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:parachute_delivery/data/shops.dart';
 import 'models/user.dart';
-// import 'package:http/http.dart' as http;
-import 'dart:convert';
-// import 'User.dart';
 
 class GlobalState {
   static const Color logoColor = Color(0xffc30101);
   static const Color secondColor = Color(0xffcccccc);
-  // static const String hostURL = "http://parachute-group.com";
   static const List<Color> logoGradient = [
     Color(0xffcccccc),
     Color(0xffCA9A9A),
@@ -38,9 +32,9 @@ class GlobalState {
       lat: 35.10,
       long: 34.06,
       address: "Lattakia, Martaqla");
-  static String? address;
-  static double? lat;
-  static double? long;
+  static String address = "Lattakia, Martaqla";
+  static double lat = 35.10;
+  static double long = 34.06;
   static List categoriesList = Shops.shops;
   static List reservationsList = [
     {
@@ -48,6 +42,7 @@ class GlobalState {
       "shop_id": 0,
       "date": "2021-02-07 15:30",
       "created_at": "2021-01-10 11:30",
+      "People#": 2,
       "status": "accepted",
     },
     {
@@ -55,6 +50,7 @@ class GlobalState {
       "shop_id": 0,
       "date": "2021-01-22 17:30",
       "created_at": "2021-01-10 11:30",
+      "People#": 3,
       "status": "canceled",
     },
     {
@@ -62,107 +58,10 @@ class GlobalState {
       "shop_id": 1,
       "date": "2021-02-15 18:30",
       "created_at": "2021-01-10 11:30",
+      "People#": 4,
       "status": "pending",
     },
   ];
-
-  static void saveLocation(
-      String newAddress, double newLat, double newLong) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    address = newAddress;
-    lat = newLat;
-    long = newLong;
-    prefs.setString('location', address!);
-    prefs.setDouble('lat', lat!);
-    prefs.setDouble('lng', long!);
-    if (loggedIn == true) {
-      thisUser.address = newAddress;
-      thisUser.lat = newLat;
-      thisUser.long = newLong;
-      logIn(thisUser);
-    }
-  }
-
-  static Future<String> getLocation() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    address = prefs.getString('location') ?? 'nowhere';
-    lat = prefs.getDouble('lat') ?? 0.0;
-    long = prefs.getDouble('lng') ?? 0.0;
-    // if (address == null) {
-    //   address = 'nowhere';
-    // }
-    return address ?? 'nowhere';
-  }
-
-  static void logIn(User user) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    loggedIn = true;
-    thisUser = user;
-    address = thisUser.address;
-    lat = thisUser.lat;
-    long = thisUser.long;
-    Map userMap = thisUser.toJson();
-    prefs.setBool('loggedIn', loggedIn);
-    prefs.setString('User', json.encode(userMap));
-  }
-
-  static void logOut() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    loggedIn = false;
-    thisUser = User(
-        firstName: 'firstName',
-        lastName: 'lastName',
-        email: 'email',
-        phone: 'phone',
-        token: 'token',
-        lat: 0.0,
-        long: 0.0,
-        address: 'address');
-    prefs.setBool('loggedIn', loggedIn);
-    prefs.setString('User', '');
-  }
-
-  // static void checkLogIn() async {
-  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   loggedIn = prefs.getBool('loggedIn')!;
-  //   if (loggedIn == true) {
-  //     String userString = prefs.getString('User')!;
-  //     Map userMap = json.decode(userString);
-  //     thisUser = User.fromJson(userMap);
-  //     final String getUserInfoURL = "$hostURL/api/auth/user";
-  //     final response = await http.get(
-  //       getUserInfoURL,
-  //       headers: {'Authorization': 'Bearer ${thisUser.token}'},
-  //     );
-  //     if (response.statusCode == 200) {
-  //       final Map _userInfo = json.decode(response.body);
-  //       logIn(User.fromJson({
-  //         "first_name": _userInfo['success']['first_name'],
-  //         "last_name": _userInfo['success']['last_name'],
-  //         "email": _userInfo['success']['email'],
-  //         "phone": _userInfo['success']['phone'],
-  //         "token": thisUser.token,
-  //         "lat": double.parse(_userInfo['success']['lat']),
-  //         "long": double.parse(_userInfo['success']['long']),
-  //         "address": _userInfo['success']['address'],
-  //       }));
-  //       reservationsList = _userInfo['success']['reservations'];
-  //     }
-  //   } else {
-  //     loggedIn = false;
-  //   }
-  // }
-
-  // static void toastMessage(String message) {
-  //   Fluttertoast.showToast(
-  //     msg: message,
-  //     toastLength: Toast.LENGTH_SHORT,
-  //     gravity: ToastGravity.BOTTOM,
-  //     timeInSecForIos: 5,
-  //     fontSize: 16.0,
-  //     backgroundColor: Colors.black,
-  //   );
-  // }
 
   static Widget rateWithIcon(var rate,
       {Text text = const Text('Rate',
