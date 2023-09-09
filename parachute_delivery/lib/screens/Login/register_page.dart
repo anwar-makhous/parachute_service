@@ -93,15 +93,15 @@ class _RegisterPageState extends State<RegisterPage> {
             },
           ),
           toolbarTextStyle: const TextTheme(
-              headline6: TextStyle(
+              titleLarge: TextStyle(
             color: Colors.black,
             fontSize: 18,
-          )).bodyText2,
+          )).bodyMedium,
           titleTextStyle: const TextTheme(
-              headline6: TextStyle(
+              titleLarge: TextStyle(
             color: Colors.black,
             fontSize: 18,
-          )).headline6,
+          )).titleLarge,
         ),
         body: Stack(
           children: [
@@ -172,6 +172,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 hintText: "Enter Your First Name"),
             textInputAction: TextInputAction.next,
             validator: (name) {
+              return null;
+            
               // Pattern pattern = r'^[A-Za-z0-9ء-ي]+(?:[ _-][A-Za-z0-9ء-ي]+)*$';
               // RegExp regex = RegExp(pattern);
               // if (!regex.hasMatch(name)) {
@@ -213,6 +215,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 hintText: "Enter Your Last Name"),
             textInputAction: TextInputAction.next,
             validator: (name) {
+              return null;
+            
               // Pattern pattern = r'^[A-Za-z0-9ء-ي]+(?:[ _-][A-Za-z0-9ء-ي]+)*$';
               // RegExp regex = RegExp(pattern);
               // if (!regex.hasMatch(name)) {
@@ -254,6 +258,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 hintText: "Enter Your Phone Number"),
             textInputAction: TextInputAction.next,
             validator: (name) {
+              return null;
+            
               // Pattern pattern = r'^(?:[+0]9)?[0-9]{7,20}$';
               // RegExp regex = RegExp(pattern);
               // if (!regex.hasMatch(name)) {
@@ -344,6 +350,8 @@ class _RegisterPageState extends State<RegisterPage> {
               setState(() {});
             },
             validator: (password) {
+              return null;
+            
               // Pattern pattern = r'^([a-zA-Z0-9*.!@$%^&():;<>,?~_+-=]{8,})$';
               // RegExp regex = RegExp(pattern);
               // if (!regex.hasMatch(password)) {

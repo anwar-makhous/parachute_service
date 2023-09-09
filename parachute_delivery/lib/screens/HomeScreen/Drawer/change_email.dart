@@ -86,15 +86,15 @@ class _ChangeEmail extends State<ChangeEmail> {
             },
           ),
           toolbarTextStyle: const TextTheme(
-              headline6: TextStyle(
+              titleLarge: TextStyle(
             color: Colors.black,
             fontSize: 18,
-          )).bodyText2,
+          )).bodyMedium,
           titleTextStyle: const TextTheme(
-              headline6: TextStyle(
+              titleLarge: TextStyle(
             color: Colors.black,
             fontSize: 18,
-          )).headline6,
+          )).titleLarge,
         ),
         body: Stack(
           children: [
@@ -147,6 +147,8 @@ class _ChangeEmail extends State<ChangeEmail> {
           filled: true),
       textInputAction: TextInputAction.next,
       validator: (email) {
+        return null;
+      
         // return EmailValidator.validate(email) ? null : "Invalid email address";
       },
     );

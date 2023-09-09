@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
-import 'package:google_maps_place_picker_mb/providers/place_provider.dart';
-import 'package:google_maps_place_picker_mb/providers/search_provider.dart';
 import '/screens/HomeScreen/home_page.dart';
 // import 'package:http/http.dart' as http;
 import '/screens/HomeScreen/Drawer/account_info.dart';
@@ -20,12 +18,12 @@ class PlaceLocation extends StatefulWidget {
 
   PlaceLocation(this.allowGPS, {Key? key}) : super(key: key);
 
-  PlaceLocation.showLocation(this.allowGPS, this.customInitialPosition) {
+  PlaceLocation.showLocation(this.allowGPS, this.customInitialPosition, {Key? key}) : super(key: key) {
     initialPosition = customInitialPosition!;
     isSettingLocation = false;
   }
 
-  PlaceLocation.setLocation(this.allowGPS, this.customInitialPosition) {
+  PlaceLocation.setLocation(this.allowGPS, this.customInitialPosition, {Key? key}) : super(key: key) {
     initialPosition = customInitialPosition!;
     isSettingLocation = true;
     isChangingAccountInfo = true;
@@ -135,7 +133,7 @@ class _PlaceLocationState extends State<PlaceLocation> {
                                       height: 75,
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
-                                          primary: GlobalState.logoColor,
+                                          backgroundColor: GlobalState.logoColor,
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(14.0),

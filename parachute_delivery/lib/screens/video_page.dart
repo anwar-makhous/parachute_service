@@ -117,7 +117,7 @@ class _VideoPage extends State<VideoPage> {
                           padding: const EdgeInsets.only(right: 5, left: 5),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: GlobalState.logoColor,
+                              backgroundColor: GlobalState.logoColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(14.0),
                                   side: const BorderSide(
@@ -141,7 +141,7 @@ class _VideoPage extends State<VideoPage> {
                           padding: const EdgeInsets.only(right: 5, left: 5),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.white,
+                              backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(14.0),
                                   side: const BorderSide(

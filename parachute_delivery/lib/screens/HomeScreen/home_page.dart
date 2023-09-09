@@ -296,9 +296,10 @@ class _HomePageState extends State<HomePage> {
                                     _search = value;
                                     if (_search == "") {
                                       searchInProgress = false;
-                                    } else if (_search != null) {
+                                    } else {
                                       searchInProgress = true;
                                     }
+
                                   });
                                 },
                               ),
@@ -574,7 +575,7 @@ class _HomePageState extends State<HomePage> {
                   topRight: Radius.circular(14.0),
                 ),
               ),
-              child: Row(children: const <Widget>[
+              child: const Row(children: <Widget>[
                 Icon(
                   Icons.person_pin,
                   size: 50,
