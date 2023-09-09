@@ -39,15 +39,15 @@ class _LoginPageState extends State<LoginPage> {
             centerTitle: true,
             title: const Text('Login'),
             toolbarTextStyle: const TextTheme(
-                headline6: TextStyle(
+                titleLarge: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            )).bodyText2,
+            )).bodyMedium,
             titleTextStyle: const TextTheme(
-                headline6: TextStyle(
+                titleLarge: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            )).headline6,
+            )).titleLarge,
           ),
           body: Stack(
             children: [
@@ -137,8 +137,8 @@ class _LoginPageState extends State<LoginPage> {
   Widget _divider() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        children: const <Widget>[
+      child: const Row(
+        children: <Widget>[
           SizedBox(
             width: 20,
           ),
@@ -291,7 +291,7 @@ class _LoginPageState extends State<LoginPage> {
               setState(() {});
             },
             validator: (password) {
-              if (passwordController.text.toString() == null) {
+              if (passwordController.text.toString().isEmpty) {
                 return 'Please enter password';
               } else {
                 return null;

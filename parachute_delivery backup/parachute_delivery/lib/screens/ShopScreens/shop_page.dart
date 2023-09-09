@@ -69,15 +69,15 @@ class _ShopState extends State<Shop> {
                   ),
                 ],
                 toolbarTextStyle: const TextTheme(
-                    headline6: TextStyle(
+                    titleLarge: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
-                )).bodyText2,
+                )).bodyMedium,
                 titleTextStyle: const TextTheme(
-                    headline6: TextStyle(
+                    titleLarge: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
-                )).headline6,
+                )).titleLarge,
               ),
               backgroundColor: Colors.white,
               body: Stack(
@@ -233,10 +233,10 @@ class _ShopState extends State<Shop> {
                     ],
                   ),
                 if (hasDelivery && freeDelivery)
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const <Widget>[
+                    children: <Widget>[
                       Text(
                         "Free Delivery",
                         style: TextStyle(
@@ -268,14 +268,14 @@ class _ShopState extends State<Shop> {
                     ),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: GlobalState.logoColor,
+                          backgroundColor: GlobalState.logoColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0),
                           ),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: const [
+                          children: [
                             Text(
                               "Show On Map  ",
                               style:
@@ -373,14 +373,14 @@ class _ShopState extends State<Shop> {
                     children: <Widget>[
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: GlobalState.logoColor,
+                          backgroundColor: GlobalState.logoColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0),
                           ),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: const [
+                          children: [
                             Text(
                               "Book A Table",
                               style:
@@ -420,10 +420,10 @@ class _ShopState extends State<Shop> {
                     ],
                   ),
                 if (hasReservation)
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const <Widget>[
+                    children: <Widget>[
                       Text('Online Reservation Is Available',
                           style: TextStyle(
                             fontSize: 16,
@@ -441,14 +441,14 @@ class _ShopState extends State<Shop> {
                   children: <Widget>[
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: GlobalState.logoColor,
+                          backgroundColor: GlobalState.logoColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0),
                           ),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
+                          children: [
                             Text(
                               "Reviews  ",
                               style:
@@ -473,10 +473,10 @@ class _ShopState extends State<Shop> {
                             ))),
                   ],
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const <Widget>[
+                  children: <Widget>[
                     Text(
                       "Based on 60 reviews",
                       style: TextStyle(

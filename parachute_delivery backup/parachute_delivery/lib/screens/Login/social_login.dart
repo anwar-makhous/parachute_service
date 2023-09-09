@@ -39,15 +39,15 @@ class _SocialLoginState extends State<SocialLogin> {
               },
             ),
             toolbarTextStyle: const TextTheme(
-                headline6: TextStyle(
+                titleLarge: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            )).bodyText2,
+            )).bodyMedium,
             titleTextStyle: const TextTheme(
-                headline6: TextStyle(
+                titleLarge: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            )).headline6,
+            )).titleLarge,
           ),
           body: Form(
             key: _formKey,
@@ -102,7 +102,7 @@ class _SocialLoginState extends State<SocialLogin> {
         height: 50,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Colors.white,
+            backgroundColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
@@ -155,8 +155,8 @@ class _SocialLoginState extends State<SocialLogin> {
   Widget _divider() {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        children: const <Widget>[
+      child: const Row(
+        children: <Widget>[
           SizedBox(
             width: 20,
           ),

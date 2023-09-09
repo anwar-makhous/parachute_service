@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../global_state.dart';
-import 'social_login.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
@@ -39,15 +38,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             },
           ),
           toolbarTextStyle: const TextTheme(
-              headline6: TextStyle(
+              titleLarge: TextStyle(
             color: Colors.black,
             fontSize: 18,
-          )).bodyText2,
+          )).bodyMedium,
           titleTextStyle: const TextTheme(
-              headline6: TextStyle(
+              titleLarge: TextStyle(
             color: Colors.black,
             fontSize: 18,
-          )).headline6,
+          )).titleLarge,
         ),
         body: Stack(
           children: [
@@ -140,39 +139,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         child: const Text(
           'Submit',
           style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
-      ),
-    );
-  }
-
-  Widget _logInAccountLabel() {
-    return InkWell(
-      onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const SocialLogin()));
-      },
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 20),
-        padding: const EdgeInsets.all(15),
-        alignment: Alignment.bottomCenter,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Already have an account ?',
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Text(
-              'Login',
-              style: TextStyle(
-                  color: GlobalState.logoColor.withOpacity(0.6),
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600),
-            ),
-          ],
         ),
       ),
     );

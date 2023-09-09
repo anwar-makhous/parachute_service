@@ -82,15 +82,15 @@ class _RestaurantReservation extends State<RestaurantReservation> {
             backgroundColor: Colors.white,
             iconTheme: const IconThemeData(color: Colors.black),
             toolbarTextStyle: const TextTheme(
-                headline6: TextStyle(
+                titleLarge: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            )).bodyText2,
+            )).bodyMedium,
             titleTextStyle: const TextTheme(
-                headline6: TextStyle(
+                titleLarge: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            )).headline6,
+            )).titleLarge,
           ),
           backgroundColor: Colors.white,
           body: Stack(
@@ -180,11 +180,11 @@ class _RestaurantReservation extends State<RestaurantReservation> {
               style: TextStyle(fontSize: 20),
             ),
             style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: GlobalState.logoColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(14.0),
                   side: const BorderSide(color: GlobalState.logoColor)),
-              primary: GlobalState.logoColor,
-              onPrimary: Colors.white,
             ),
           ),
           center: Padding(
@@ -815,12 +815,10 @@ class _RestaurantReservation extends State<RestaurantReservation> {
   }
 
   void prepareReservationInfo() {
-    if (_specialOccasions != null) {
-      _specialOccasionsFinal = _specialOccasions.toString();
-      _specialOccasionsFinal = _specialOccasionsFinal.replaceAll('[', '');
-      _specialOccasionsFinal = _specialOccasionsFinal.replaceAll(']', '');
-    }
-    _reservationDetails = (_specialOccasions == null)
+    _specialOccasionsFinal = _specialOccasions.toString();
+    _specialOccasionsFinal = _specialOccasionsFinal.replaceAll('[', '');
+    _specialOccasionsFinal = _specialOccasionsFinal.replaceAll(']', '');
+    _reservationDetails = (_specialOccasions.isEmpty)
         ? _additionalDetailsController.text.toString()
         : (_additionalDetailsController.text.toString() == '')
             ? _specialOccasionsFinal

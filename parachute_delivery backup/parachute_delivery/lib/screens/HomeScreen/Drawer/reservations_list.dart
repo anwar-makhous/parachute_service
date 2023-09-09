@@ -21,15 +21,15 @@ class _ReservationsListState extends State<ReservationsList> {
             centerTitle: true,
             title: const Text('Reservations Log'),
             toolbarTextStyle: const TextTheme(
-                headline6: TextStyle(
+                titleLarge: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            )).bodyText2,
+            )).bodyMedium,
             titleTextStyle: const TextTheme(
-                headline6: TextStyle(
+                titleLarge: TextStyle(
               color: Colors.black,
               fontSize: 18,
-            )).headline6,
+            )).titleLarge,
           ),
           backgroundColor: Colors.white,
           body: mainBody(),

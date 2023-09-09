@@ -108,15 +108,15 @@ class _ReservationResultState extends State<ReservationResult> {
                       )
                     : null,
                 toolbarTextStyle: const TextTheme(
-                    headline6: TextStyle(
+                    titleLarge: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
-                )).bodyText2,
+                )).bodyMedium,
                 titleTextStyle: const TextTheme(
-                    headline6: TextStyle(
+                    titleLarge: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
-                )).headline6,
+                )).titleLarge,
               ),
               body: SingleChildScrollView(
                 child: Container(
@@ -252,14 +252,14 @@ class _ReservationResultState extends State<ReservationResult> {
               ),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: GlobalState.logoColor,
+                    backgroundColor: GlobalState.logoColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14.0),
                         side: const BorderSide(color: GlobalState.logoColor)),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: const [
+                    children: [
                       Text(
                         "Show On Map  ",
                         style: TextStyle(fontSize: 16, color: Colors.white),
@@ -362,7 +362,7 @@ class _ReservationResultState extends State<ReservationResult> {
   Widget refusedButton() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: GlobalState.logoColor,
+        backgroundColor: GlobalState.logoColor,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14.0),
             side: const BorderSide(color: GlobalState.logoColor)),
@@ -386,7 +386,7 @@ class _ReservationResultState extends State<ReservationResult> {
       children: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: GlobalState.logoColor,
+            backgroundColor: GlobalState.logoColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(14.0),
                 side: const BorderSide(color: GlobalState.logoColor)),
@@ -405,7 +405,7 @@ class _ReservationResultState extends State<ReservationResult> {
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: GlobalState.logoColor,
+            backgroundColor: GlobalState.logoColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(14.0),
                 side: const BorderSide(color: GlobalState.logoColor)),
