@@ -1,4 +1,3 @@
-# Parachute
+# Parachute_service
 
-Demo version of a food services app created by Anwar Makous & Ghaith Bilal, made with Flutter.
-
+Part of Parachute project, an application for service providers. 
